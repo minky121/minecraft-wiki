@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>МайнВики — фанатская энциклопедия Minecraft</title>
+<meta name="description" content="Фанатская вики о Minecraft: режимы игры, измерения, мобы, блоки, биомы, крафт и история версий.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%23866043'/%3E%3Crect width='8' height='3' fill='%235d9b2f'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%235d9b2f'/%3E%3Crect x='5' y='3' width='2' height='1' fill='%235d9b2f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#article">Перейти к статье</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="logo" href="#top" aria-label="МайнВики — наверх"><canvas data-icon="grassSide" aria-hidden="true"></canvas><span>МайнВики</span></a>
+    <div class="search" role="search">
+      <svg class="search-icon" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M2 0h4v1H2zM1 1h1v1H1zM6 1h1v1H6zM0 2h1v4H0zM7 2h1v4H7zM1 6h1v1H1zM6 6h1v1H6zM2 7h4v1H2zM7 7h1v1H7zM8 8h1v1H8zM9 9h1v1H9z"/></svg>
+      <label class="sr-only" for="q">Поиск по вики</label>
+      <input id="q" type="search" placeholder="Поиск: крипер, алмаз, Незер…" autocomplete="off" role="combobox" aria-controls="results" aria-expanded="false">
+      <div id="results" class="results" role="listbox" aria-label="Результаты поиска"></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top" aria-label="Главный экран">
+  <div class="sky"></div>
+  <div class="sky-night"><div class="stars"></div></div>
+  <div class="orbit" aria-hidden="true"><div class="sun"></div><div class="moon"></div></div>
+  <div class="clouds" aria-hidden="true"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c4"></div></div>
+  <div class="floaters" aria-hidden="true">
+    <div class="floater f1"><div class="cube" data-block="grass"></div></div>
+    <div class="floater f2"><div class="cube" data-block="diamond"></div></div>
+    <div class="floater f3"><div class="cube" data-block="tnt" style="--s:48px"></div></div>
+    <div class="floater f4"><div class="cube" data-block="log" style="--s:44px"></div></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="title-wrap">
+      <h1 class="title">MINECRAFT<small>ВИКИ</small></h1>
+      <span class="splash" aria-hidden="true">Кубическая энциклопедия!</span>
+    </div>
+    <p class="hero-sub">Всё о мире из блоков: мобы, биомы, крафт, измерения и история игры — в одной фанатской вики.</p>
+    <div class="hero-actions">
+      <a class="mc-btn green" href="#about">Читать статью</a>
+      <a class="mc-btn" href="#mobs">Мобы</a>
+      <a class="mc-btn" href="#craft">Крафт</a>
+    </div>
+  </div>
+
+  <div class="ground" aria-hidden="true"></div>
+  <div class="actors">
+    <div class="actor steve" aria-hidden="true"><canvas class="sprite" data-sprite="steve"></canvas></div>
+    <div class="actor alex" aria-hidden="true"><canvas class="sprite" data-sprite="alex"></canvas></div>
+    <div class="actor pig" aria-hidden="true"><canvas class="sprite" data-sprite="pig"></canvas></div>
+    <div class="actor creeper-wrap">
+      <button class="creeper-btn" type="button" aria-label="Крипер. Нажмите, если не боитесь"><span class="hint" aria-hidden="true">Тссс…</span><canvas class="sprite" data-sprite="creeper" aria-hidden="true"></canvas></button>
+    </div>
+    <div class="actor enderman" aria-hidden="true"><canvas class="sprite" data-sprite="enderman"></canvas></div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Minecraft в цифрах">
+  <div class="stats-inner">
+    <div class="stat"><b data-count="300" data-suffix="+">300+</b><span>млн проданных копий</span></div>
+    <div class="stat"><b data-count="2009">2009</b><span>год первой версии</span></div>
+    <div class="stat"><b data-count="20">20</b><span>минут длятся игровые сутки</span></div>
+    <div class="stat"><b data-count="3">3</b><span>измерения</span></div>
+  </div>
+</section>
+
+<div class="layout" id="content">
+  <nav class="sidenav gui" aria-label="Разделы статьи">
+    <h2>Навигация</h2>
+    <ul>
+      <li><a href="#about"><canvas data-icon="grassSide" aria-hidden="true"></canvas>Об игре</a></li>
+      <li><a href="#modes"><canvas data-icon="heart" aria-hidden="true"></canvas>Режимы игры</a></li>
+      <li><a href="#dimensions"><canvas data-icon="obsidian" aria-hidden="true"></canvas>Измерения</a></li>
+      <li><a href="#mobs"><canvas data-icon="creeperFace" aria-hidden="true"></canvas>Мобы</a></li>
+      <li><a href="#blocks"><canvas data-icon="cobble" aria-hidden="true"></canvas>Блоки</a></li>
+      <li><a href="#biomes"><canvas data-icon="leaves" aria-hidden="true"></canvas>Биомы</a></li>
+      <li><a href="#craft"><canvas data-icon="tableSide" aria-hidden="true"></canvas>Крафт</a></li>
+      <li><a href="#history"><canvas data-icon="torch" aria-hidden="true"></canvas>История версий</a></li>
+    </ul>
+    <a class="mc-btn to-top" href="#top">Наверх</a>
+  </nav>
+
+  <main class="article" id="article">
+    <h2 class="page-title" style="border:0;margin:0 0 10px;padding:0;display:block;color:var(--ink)">Minecraft</h2>
+    <p class="from">Материал из МайнВики — фанатской энциклопедии о мире из блоков</p>
+
+    <aside class="infobox gui" aria-label="Карточка игры">
+      <div class="ib-title">Minecraft</div>
+      <div class="ib-art"><div class="cube" data-block="grass"></div></div>
+      <table>
+        <tr><th scope="row">Разработчик</th><td>Mojang Studios</td></tr>
+        <tr><th scope="row">Издатели</th><td>Mojang Studios, Xbox Game Studios</td></tr>
+        <tr><th scope="row">Создатель</th><td>Маркус Перссон (Notch)</td></tr>
+        <tr><th scope="row">Жанр</th><td>Песочница, выживание</td></tr>
+        <tr><th scope="row">Первая версия</th><td>17 мая 2009</td></tr>
+        <tr><th scope="row">Релиз 1.0</th><td>18 ноября 2011</td></tr>
+        <tr><th scope="row">Издания</th><td>Java Edition, Bedrock Edition</td></tr>
+        <tr><th scope="row">Режимы</th><td>Одиночный, многопользовательский</td></tr>
+      </table>
+    </aside>
+
+    <section id="about" aria-labelledby="h-about">
+      <p class="lead"><b>Minecraft</b> — игра-песочница, в которой весь мир состоит из кубических блоков. Игрок добывает ресурсы, строит что угодно, сражается с монстрами и исследует почти бесконечные миры, которые создаются случайным образом.</p>
+      <p>Игру придумал шведский программист Маркус Перссон, известный как Notch. Позже разработку продолжила студия Mojang Studios, которую в 2014 году купила Microsoft. Сегодня Minecraft — самая продаваемая игра в истории: продано более 300 миллионов копий.</p>
+      <p>Существует два основных издания: <b>Java Edition</b> для Windows, macOS и Linux и <b>Bedrock Edition</b> для консолей, смартфонов и Windows. В Bedrock можно играть вместе с друзьями на разных устройствах.</p>
+
+      <nav class="toc gui" aria-labelledby="toc-title">
+        <h2 class="toc-title" id="toc-title">Содержание</h2>
+        <ol>
+          <li><a href="#modes">Режимы игры</a></li>
+          <li><a href="#dimensions">Измерения</a></li>
+          <li><a href="#mobs">Мобы и персонажи</a></li>
+          <li><a href="#blocks">Блоки</a></li>
+          <li><a href="#biomes">Биомы</a></li>
+          <li><a href="#craft">Крафт</a></li>
+          <li><a href="#history">История версий</a></li>
+        </ol>
+      </nav>
+      <div class="clear"></div>
+
+      <div class="factbox gui" aria-live="polite">
+        <canvas data-icon="book" aria-hidden="true"></canvas>
+        <div class="f-body"><div class="f-label">Случайный факт</div><p id="fact">Один игровой день в Minecraft длится 20 реальных минут.</p></div>
+        <button class="mc-btn" type="button" id="factBtn">Ещё факт</button>
+      </div>
+    </section>
+
+    <section id="modes" aria-labelledby="h-modes">
+      <h2 id="h-modes"><canvas data-icon="heart" aria-hidden="true"></canvas>Режимы игры</h2>
+      <p>Режим определяет правила мира: нужно ли следить за здоровьем, есть ли у вас бесконечные блоки и можно ли вообще что-то ломать.</p>
+      <div class="grid modes" id="modesGrid"></div>
+    </section>
+
+    <section id="dimensions" aria-labelledby="h-dims">
+      <h2 id="h-dims"><canvas data-icon="obsidian" aria-hidden="true"></canvas>Измерения</h2>
+      <p>Мир Minecraft разделён на три измерения. Каждое выглядит по-своему, и в каждом свои ресурсы и опасности.</p>
+      <div class="grid dims" id="dimsGrid"></div>
+    </section>
+
+    <section id="mobs" aria-labelledby="h-mobs">
+      <h2 id="h-mobs"><canvas data-icon="creeperFace" aria-hidden="true"></canvas>Мобы и персонажи</h2>
+      <p>Мобы — живые существа игры. Бывают мирные, нейтральные и враждебные. Нажмите на карточку, чтобы открыть статью о мобе.</p>
+      <div class="grid mobs" id="mobsGrid"></div>
+    </section>
+
+    <section id="blocks" aria-labelledby="h-blocks">
+      <h2 id="h-blocks"><canvas data-icon="cobble" aria-hidden="true"></canvas>Блоки</h2>
+      <div class="blocks-head">
+        <p>Из блоков построено всё. Нажмите на блок, чтобы сломать его.</p>
+        <div class="counter" aria-live="polite">Сломано: <b id="broken">0</b></div>
+      </div>
+      <div class="grid blocks" id="blocksGrid"></div>
+    </section>
+
+    <section id="biomes" aria-labelledby="h-biomes">
+      <h2 id="h-biomes"><canvas data-icon="leaves" aria-hidden="true"></canvas>Биомы</h2>
+      <p>Биом — это участок мира со своим климатом, растениями и жителями. Вот самые известные биомы Верхнего мира.</p>
+      <div class="grid biomes" id="biomesGrid"></div>
+    </section>
+
+    <section id="craft" aria-labelledby="h-craft">
+      <h2 id="h-craft"><canvas data-icon="tableSide" aria-hidden="true"></canvas>Крафт</h2>
+      <p>Крафт — создание предметов из ресурсов. Выберите рецепт, и верстак покажет, куда положить материалы.</p>
+      <div class="crafter">
+        <div class="recipes gui" role="tablist" aria-label="Рецепты" id="recipeList"></div>
+        <div class="craft-gui gui" role="tabpanel" id="craftPanel">
+          <p class="gui-title">Верстак</p>
+          <div class="craft-row">
+            <div class="grid3" id="craftGrid"></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="slot out" id="craftOut"></div>
+          </div>
+          <p class="recipe-desc" id="recipeDesc"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="history" aria-labelledby="h-history">
+      <h2 id="h-history"><canvas data-icon="torch" aria-hidden="true"></canvas>История версий</h2>
+      <p>За полтора десятка лет Minecraft прошёл путь от небольшого проекта одного программиста до самой продаваемой игры в мире.</p>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="f-logo">МайнВики</div>
+    <p>Фанатский проект о Minecraft. Все персонажи и текстуры на сайте нарисованы заново пиксель за пикселем.</p>
+    <p class="disclaimer">Неофициальный продукт Minecraft. Не одобрен Mojang или Microsoft и не связан с ними.<br>NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+  </div>
+</footer>
+
+<dialog class="mob-dialog" id="mobDialog" aria-labelledby="mobTitle">
+  <div class="dlg gui">
+    <button class="mc-btn dlg-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><path fill="#fff" d="M0 0h2v1H0zM1 1h2v1H1zM2 2h4v1H2zM3 3h2v2H3zM2 5h4v1H2zM1 6h2v1H1zM0 7h2v1H0zM6 0h2v1H6zM5 1h2v1H5zM5 6h2v1H5zM6 7h2v1H6z"/></svg></button>
+    <div class="dlg-art" id="dlgArt"></div>
+    <div>
+      <h3 id="mobTitle"></h3>
+      <div id="dlgTag"></div>
+      <p id="dlgDesc"></p>
+      <table id="dlgTable"></table>
+      <p class="fact" id="dlgFact"></p>
+    </div>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
