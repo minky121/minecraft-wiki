@@ -1,0 +1,88 @@
+/* ===== 3D-модель Стива ===== */
+.actor.s3d-open { cursor: pointer; outline-offset: 6px; }
+.actor.s3d-open:hover canvas, .actor.s3d-open:focus-visible canvas { filter: drop-shadow(0 0 6px #fff7a8) drop-shadow(4px 0 0 rgba(0,0,0,.18)); }
+.s3d-badge {
+  position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%);
+  padding: 4px 7px 3px; font: 700 12px/1 "Pixelify Sans", system-ui, sans-serif; color: #2b1d00;
+  background: #ffe14d; border: 2px solid #000; box-shadow: inset -2px -2px 0 #c9a400, 3px 3px 0 rgba(0,0,0,.35);
+  white-space: nowrap; pointer-events: none; animation: s3d-bounce 1.2s ease-in-out infinite;
+}
+.s3d-badge::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -5px; border: 5px solid transparent; border-top-color: #000; }
+@keyframes s3d-bounce { 50% { transform: translateX(-50%) translateY(-6px); } }
+
+dialog.s3d {
+  width: min(980px, calc(100vw - 24px)); height: min(760px, calc(100dvh - 24px));
+  max-width: none; max-height: none; padding: 0; border: 4px solid #000; color: #fff;
+  background: #1f1a14; box-shadow: inset 4px 4px 0 #5a4c3c, inset -4px -4px 0 #0d0a07, 0 20px 60px rgba(0,0,0,.6);
+  overflow: hidden;
+}
+dialog.s3d[open] { display: flex; flex-direction: column; animation: s3d-in .25s ease-out; }
+dialog.s3d::backdrop { background: rgba(8, 6, 4, .72); backdrop-filter: blur(3px); }
+@keyframes s3d-in { from { opacity: 0; transform: scale(.96); } }
+.s3d-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px 10px 20px; }
+.s3d-top h2 { margin: 0; font: 700 22px/1.1 "Pixelify Sans", system-ui, sans-serif; letter-spacing: .5px; text-shadow: 2px 2px 0 #000; }
+.s3d-x {
+  width: 44px; height: 44px; flex: none; font-size: 28px; line-height: 1; color: #fff; cursor: pointer;
+  background: #7a2a22; border: 3px solid #000; box-shadow: inset -3px -3px 0 #4a1712, inset 3px 3px 0 #b5473b;
+}
+.s3d-x:hover { background: #943328; }
+.s3d-x:focus-visible, .s3d-stage:focus-visible, .s3d-ctrl button:focus-visible { outline: 3px solid #ffe14d; outline-offset: 2px; }
+
+.s3d-stage {
+  --s: max(5px, min(11px, calc((100dvh - 250px) / 46), calc((100vw - 48px) / 34)));
+  position: relative; flex: 1; min-height: 0; margin: 0 14px; overflow: hidden;
+  border: 3px solid #000; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+  background: linear-gradient(#4f9cf0, #9fd0ff 70%, #cfe8ff);
+  perspective: 1300px; perspective-origin: 50% 40%;
+}
+.s3d-stage.grab { cursor: grabbing; }
+.s3d-world { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
+.s3d-rig { position: absolute; left: 0; top: 0; transform-style: preserve-3d; transform: translateY(calc(var(--s) * var(--j, 0) * -1)); }
+.s3d-part, .s3d-ground, .s3d-shadow { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
+.s3d-part { transform: translate3d(var(--tx), var(--ty), 0) rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg)) rotateZ(var(--rz, 0deg)); }
+.s3d-face {
+  position: absolute; background-size: 100% 100%; image-rendering: pixelated; image-rendering: crisp-edges;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.s3d-face::after { content: ""; position: absolute; inset: 0; background: #000; opacity: 0; }
+.s3d-face.front::after { opacity: .02; }
+.s3d-face.left::after, .s3d-face.right::after { opacity: .16; }
+.s3d-face.back::after { opacity: .24; }
+.s3d-face.bottom::after { opacity: .38; }
+.s3d-ground {
+  transform: translate3d(var(--tx), var(--ty), 0) rotateX(90deg);
+  image-rendering: pixelated; background-repeat: repeat;
+  box-shadow: 0 0 0 calc(var(--s) * .6) #3e6e22; border-radius: 2px;
+}
+.s3d-shadow {
+  transform: translate3d(var(--tx), var(--ty), 0) rotateX(90deg) scale(var(--sc, 1));
+  background: radial-gradient(closest-side, rgba(0,0,0,.42), rgba(0,0,0,0));
+}
+.s3d-help {
+  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); margin: 0; padding: 6px 10px;
+  font: 600 13px/1.2 system-ui, sans-serif; color: #fff; background: rgba(0,0,0,.55); white-space: nowrap;
+  pointer-events: none; transition: opacity .4s;
+}
+.s3d-help .touch { display: none; }
+@media (hover: none), (pointer: coarse) { .s3d-help .desk { display: none; } .s3d-help .touch { display: inline; } }
+.s3d-stage.used .s3d-help { opacity: 0; }
+
+.s3d-ctrl { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 12px 14px 14px; }
+.s3d-ctrl button { min-height: 44px; cursor: pointer; }
+.s3d-ctrl button[aria-pressed="true"] { background: #3c8527; box-shadow: inset -3px -3px 0 #24561a, inset 3px 3px 0 #6cbf4a; color: #fff; }
+.s3d-from-mob { margin-top: 14px; min-height: 44px; cursor: pointer; }
+.s3d-from-mob[hidden] { display: none; }
+
+@media (max-width: 640px) {
+  dialog.s3d { width: 100vw; height: 100dvh; margin: 0; border: 0; }
+  .s3d-top { padding: 10px 10px 8px 14px; }
+  .s3d-top h2 { font-size: 19px; }
+  .s3d-stage { margin: 0 8px; }
+  .s3d-ctrl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 10px 8px calc(10px + env(safe-area-inset-bottom)); }
+  .s3d-ctrl button { padding: 6px 4px; font-size: 13px; }
+  .s3d-ctrl button[data-act="spin"], .s3d-ctrl button[data-act="reset"] { grid-column: span 1; }
+  .s3d-ctrl button:nth-child(4) { grid-column: 1 / span 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .s3d-badge, dialog.s3d[open] { animation: none; }
+}
